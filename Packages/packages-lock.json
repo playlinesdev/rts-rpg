@@ -91,6 +91,13 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+    "net.tomweiland.riptidenetworking": {
+      "version": "https://github.com/tom-weiland/RiptideNetworking.git?path=/UnityPackage",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ad1ce59d60fe69db9b7bcbca37854a171dba5e6f"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
