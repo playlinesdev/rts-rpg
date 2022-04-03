@@ -11,6 +11,9 @@ namespace ServerSpecific
         public ushort id { get; private set; }
         public string username { get; private set; }
 
+        [SerializeField] private PlayerMovement _movement;
+        public PlayerMovement movement => _movement;
+
         private void OnDestroy()
         {
             list.Remove(id);
@@ -56,6 +59,13 @@ namespace ServerSpecific
         private static void Name(ushort fromClientId, Message message)
         {
             spawn(fromClientId, message.GetString());
+        }
+
+        [MessageHandler((ushort)ClientToServerId.input)]
+        private static void input(ushort fromClient, Message message)
+        {
+            if (list.TryGetValue(fromClient, out var player))
+                player.movement.setInput(message.GetBools(6), message.GetVector3());
         }
         #endregion
     }

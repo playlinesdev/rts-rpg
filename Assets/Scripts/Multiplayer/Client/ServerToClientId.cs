@@ -4,5 +4,6 @@
     {
         name = 1,
         playerSpawned = 2,
+        playerMovement,
     }
 }

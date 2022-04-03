@@ -56,7 +56,8 @@ namespace ClientSpecific
 
         private void playerLeft(object sender, ClientDisconnectedEventArgs e)
         {
-            Destroy(Player.list[e.Id].gameObject);
+            if (Player.list.TryGetValue(e.Id, out Player player))
+                Destroy(player.gameObject);
         }
 
         public void connect(string srvIp)
@@ -77,6 +78,10 @@ namespace ClientSpecific
         private void didDisconnect(object sender, EventArgs e)
         {
             UIManager.singleton.backToMain();
+            foreach (Player player in Player.list.Values)
+            {
+                Destroy(player.gameObject);
+            }
         }
     }
 }

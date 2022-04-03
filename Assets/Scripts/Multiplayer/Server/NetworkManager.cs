@@ -56,7 +56,8 @@ namespace ServerSpecific
 
         private void playerLeft(object sender, ClientDisconnectedEventArgs e)
         {
-            Destroy(Player.list[e.Id].gameObject);
+            if (Player.list.TryGetValue(e.Id, out Player player))
+                Destroy(player.gameObject);
         }
     }
 
